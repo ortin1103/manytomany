@@ -1,0 +1,2 @@
+org.springframework.dao.IncorrectResultSizeDataAccessException: result returns more than one elements; nested exception is
+javax.persistence.NonUniqueResultException: result returns more than one elements

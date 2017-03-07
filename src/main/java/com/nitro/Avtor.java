@@ -42,8 +42,8 @@ public class Avtor {
         return books;
     }
 
-    public void setBooks(Book book) {
-        books.add(book);
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public String getName() {
@@ -66,4 +66,7 @@ public class Avtor {
         return "avtor [ "+getName()+" "+getSecondName()+" ]";
     }
 
+    public void addBook(Book book) {
+        books.add(book);
+    }
 }

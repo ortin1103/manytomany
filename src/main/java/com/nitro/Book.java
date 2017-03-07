@@ -43,11 +43,15 @@ public class Book {
         return avtors;
     }
 
-    public void setAvtors(Avtor avtor) {
-        avtors.add(avtor);
+    public void setAvtors(Set<Avtor> avtors) {
+        this.avtors = avtors;
     }
 
     public String toString(){
         return "book: "+getName();
+    }
+
+    public void addAvtor(Avtor avtor) {
+        avtors.add(avtor);
     }
 }

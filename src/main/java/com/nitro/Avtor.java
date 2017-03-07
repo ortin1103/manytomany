@@ -6,11 +6,12 @@ import java.util.Set;
 @Entity
 public class Avtor {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name="avtors_books",
             joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
@@ -41,7 +42,6 @@ public class Avtor {
     }
 
     public void setBooks(Set<Book> books) {
-
         this.books = books;
     }
 

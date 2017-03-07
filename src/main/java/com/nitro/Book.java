@@ -12,7 +12,7 @@ public class Book {
 
     private String name;
 
-    @ManyToMany(mappedBy = "books",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "books")
     private Set<Avtor> avtors;
 
     public Book(String name) {
@@ -47,6 +47,6 @@ public class Book {
     }
 
     public String toString(){
-        return "book: "+getName();
+        return "id: "+getId()+" book: "+getName();
     }
 }

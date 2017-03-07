@@ -34,10 +34,14 @@ public class DemoApplicationTests {
 		Avtor three = new Avtor("Vova", "Geremiy");
 		Avtor four = new Avtor("Roman", "Sapkovskiy");
 
-		first.setBooks( ("My life"));
-		second.setBooks("Second of wins");
-		first.setBooks("My firs of dance");
-		second.setBooks("Seconds of death");
+		first.setBooks( new Book("My life"));
+		second.setBooks(new Book("Second of wins"));
+		first.setBooks(new Book("My firs of dance"));
+		second.setBooks(new Book("Seconds of death"));
+
+		Book firsBook= new Book("One+one");
+		firsBook.setAvtors(three);
+		firsBook.setAvtors(four);
 
 
 //		three.setBooks("One life");
@@ -45,6 +49,7 @@ public class DemoApplicationTests {
 
 
 		avtorRepo.save(Arrays.asList(first, second, three, four));
+		bookRepo.save(Arrays.asList(firsBook));
 
 
 	}
@@ -72,16 +77,20 @@ public class DemoApplicationTests {
 			logger.info(book.toString());
 		}
 	}
-//	@Test
-//	public void testGetBookByName(){
-//		Book book=bookRepo.findAll();
-//	}
 	@Test
 	public void testAllBooks() {
 		logger.info("*****************");
 		Iterable<Book> allbooks = bookRepo.findAll();
 		for (Book book : allbooks) {
 			logger.info(book.getName());
+		}
+	}
+	@Test
+	public void testGetBookByName(){
+		Book book= bookRepo.findBookByName("One+one");
+		Set<Avtor> avtors =book.getAvtors();
+		for (Avtor avtor: avtors){
+			logger.info(avtor.toString());
 		}
 	}
 

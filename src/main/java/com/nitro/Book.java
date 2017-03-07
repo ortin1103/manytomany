@@ -2,6 +2,7 @@ package com.nitro;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,8 +13,8 @@ public class Book {
 
     private String name;
 
-    @ManyToMany(mappedBy = "books")
-    private Set<Avtor> avtors;
+    @ManyToMany(mappedBy = "books",fetch = FetchType.EAGER)
+    private Set<Avtor> avtors=new HashSet<Avtor>();
 
     public Book(String name) {
         this.name = name;
@@ -42,11 +43,11 @@ public class Book {
         return avtors;
     }
 
-    public void setAvtors(Set<Avtor> avtors) {
-        this.avtors = avtors;
+    public void setAvtors(Avtor avtor) {
+        avtors.add(avtor);
     }
 
     public String toString(){
-        return "id: "+getId()+" book: "+getName();
+        return "book: "+getName();
     }
 }

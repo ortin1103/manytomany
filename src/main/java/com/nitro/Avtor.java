@@ -1,6 +1,7 @@
 package com.nitro;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,7 @@ public class Avtor {
     @JoinTable(name="avtors_books",
             joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
             inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
-    private Set<Book> books;
+    private Set<Book> books=new HashSet<Book>();
 
 
     private String name;
@@ -41,8 +42,8 @@ public class Avtor {
         return books;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setBooks(Book book) {
+        books.add(book);
     }
 
     public String getName() {

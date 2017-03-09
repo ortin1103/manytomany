@@ -12,7 +12,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
-import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,15 +33,15 @@ public class DemoApplicationTests {
 		Avtor three = new Avtor("Vova", "Geremiy");
 		Avtor four = new Avtor("Roman", "Sapkovskiy");
 
-		first.getBooks().add(new Book("My life"));
-		second.getBooks().add(new Book("Second of wins"));
-		first.getBooks().add(new Book("My firs of dance"));
-		second.getBooks().add(new Book("Seconds of death"));
+//		first.getBooks().add(new Book("My life"));
+//		second.getBooks().add(new Book("Second of wins"));
+//		first.getBooks().add(new Book("My firs of dance"));
+//		second.getBooks().add(new Book("Seconds of death"));
 
 		Book firsBook= new Book("One+one");
 
-		firsBook.getAvtors().add(new Avtor("Asadsa","asdfasff"));
-		firsBook.getAvtors().add(avtorRepo.save(new Avtor("sadsa","asdfasff")));
+//		firsBook.getAvtors().add(new Avtor("Asadsa","asdfasff"));
+//		firsBook.getAvtors().add(avtorRepo.save(new Avtor("sadsa","asdfasff")));
 
 //
 //		three.setBooks("One life");
@@ -70,14 +69,14 @@ public class DemoApplicationTests {
 		logger.info("**** counts: "+avtorRepo.count());
 		logger.info("*****************");
 	}
-	@Test
-	public void testGetAvtorByName(){
-		Avtor avtor=avtorRepo.findAvtorByName("Semen");
-		Set<Book> books=avtor.getBooks();
-		for (Book book:books){
-			logger.info(book.toString());
-		}
-	}
+//	@Test
+//	public void testGetAvtorByName(){
+//		Avtor avtor=avtorRepo.findAvtorByName("Semen");
+//		Set<Book> books=avtor.getBooks();
+//		for (Book book:books){
+//			logger.info(book.toString());
+//		}
+//	}
 	@Test
 	public void testAllBooks() {
 		logger.info("*****************");

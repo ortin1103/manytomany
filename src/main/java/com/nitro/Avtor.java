@@ -1,23 +1,23 @@
 package com.nitro;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Avtor {
 
 
     @Id
-    @Column(name = "avtors_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+  //  @Column(name = "avtors_id")
+    @GeneratedValue
     private long id;
 
-    @ManyToMany(mappedBy = "avtors")
+//    @ManyToMany
 //    @JoinTable(name="avtors_books",
 //            joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
 //            inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
-    private Set<Book> books=new HashSet<Book>();
+  //  private Set<Book> books=new HashSet<Book>();
 
 
     private String name;
@@ -39,13 +39,13 @@ public class Avtor {
         this.id = id;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
+//    public Set<Book> getBooks() {
+//        return books;
+//    }
+//
+//    public void setBooks(Set<Book> books) {
+//        this.books = books;
+//    }
 
     public String getName() {
         return name;
@@ -67,7 +67,5 @@ public class Avtor {
         return "avtor [ "+getName()+" "+getSecondName()+" ]";
     }
 
-    public void addBook(Book book) {
-        books.add(book);
-    }
+
 }

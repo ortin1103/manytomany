@@ -9,11 +9,15 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "books_id")
     private long id;
 
     private String name;
 
-    @ManyToMany(mappedBy = "books",fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(name="avtors_books",
+            joinColumns = @JoinColumn(name="books_id"),
+            inverseJoinColumns = @JoinColumn(name="avtors_id"))
     private Set<Avtor> avtors=new HashSet<Avtor>();
 
     public Book(String name) {
@@ -51,7 +55,7 @@ public class Book {
         return "book: "+getName();
     }
 
-    public void addAvtor(Avtor avtor) {
-        avtors.add(avtor);
-    }
+//    public void addAvtor(Avtor avtor) {
+//        avtors.add(avtor);
+//    }
 }

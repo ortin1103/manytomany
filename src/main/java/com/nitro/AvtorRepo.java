@@ -1,7 +1,7 @@
 package com.nitro;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface AvtorRepo extends CrudRepository<Avtor,Long> {
+public interface AvtorRepo extends PagingAndSortingRepository<Avtor,Long> {
     Avtor findAvtorByName(String name);
 }

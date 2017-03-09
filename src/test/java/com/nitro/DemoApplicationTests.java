@@ -34,23 +34,23 @@ public class DemoApplicationTests {
 		Avtor three = new Avtor("Vova", "Geremiy");
 		Avtor four = new Avtor("Roman", "Sapkovskiy");
 
-		first.addBook(new Book("My life"));
-		second.addBook(new Book("Second of wins"));
-		first.addBook(new Book("My firs of dance"));
-		second.addBook(new Book("Seconds of death"));
+		first.getBooks().add(new Book("My life"));
+		second.getBooks().add(new Book("Second of wins"));
+		first.getBooks().add(new Book("My firs of dance"));
+		second.getBooks().add(new Book("Seconds of death"));
 
 		Book firsBook= new Book("One+one");
 
-		firsBook.addAvtor(new Avtor("Asadsa","asdfasff"));
-	//	firsBook.addAvtor(new Avtor("sadsa","asdfasff"));
+		firsBook.getAvtors().add(new Avtor("Asadsa","asdfasff"));
+		firsBook.getAvtors().add(avtorRepo.save(new Avtor("sadsa","asdfasff")));
 
-
+//
 //		three.setBooks("One life");
 //		four.setBooks("One life");
 
 
 		avtorRepo.save(Arrays.asList(first, second, three, four));
-		bookRepo.save(Arrays.asList(firsBook));
+		bookRepo.save(firsBook);
 
 
 	}
@@ -86,16 +86,16 @@ public class DemoApplicationTests {
 			logger.info(book.getName());
 		}
 	}
-	@Test
-	public void testGetBookByName() {
+//	@Test
+//	public void testGetBookByName() {
 
-		Book book = bookRepo.findBookByName("One+one");
-		Set<Avtor> avtors = book.getAvtors();
-		for (Avtor avtor : avtors) {
-			logger.info(avtor.toString());
-
-		}
-	}
+//		Book book = bookRepo.findAvtorByName("One+one");
+//		Set<Avtor> avtors = book.getAvtors();
+//		for (Avtor avtor : avtors) {
+//			logger.info(avtor.toString());
+//
+//		}
+//	}
 
 
 	@After

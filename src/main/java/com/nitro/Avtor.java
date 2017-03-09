@@ -9,13 +9,14 @@ public class Avtor {
 
 
     @Id
+    @Column(name = "avtors_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name="avtors_books",
-            joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
+    @ManyToMany(mappedBy = "avtors")
+//    @JoinTable(name="avtors_books",
+//            joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
+//            inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
     private Set<Book> books=new HashSet<Book>();
 
 

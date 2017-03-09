@@ -1,11 +1,11 @@
 package com.nitro;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 
-public interface BookRepo extends CrudRepository<Book,Long> {
-
-    Book findBookByName(String name);
+public interface BookRepo extends PagingAndSortingRepository<Book,Long> {
 
 
+
+//    Book findAvtorByName(String name);
 }

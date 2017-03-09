@@ -2,6 +2,8 @@ package com.nitro;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Book {
@@ -12,12 +14,12 @@ public class Book {
 
     private String name;
 
- //   @ManyToMany
+   @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //    @JoinTable(name="avtors_books",
-//            joinColumns = @JoinColumn(name="books_id"),
-//            inverseJoinColumns = @JoinColumn(name="avtors_id"))
-//    private Set<Avtor> avtors=new HashSet<Avtor>();
-//
+//            joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
+//            inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
+  private Set<Avtor> avtors=new HashSet<Avtor>();
+
     public Book(String name) {
         this.name = name;
     }
@@ -40,17 +42,22 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-//
-//    public Set<Avtor> getAvtors() {
-//        return avtors;
-//    }
-//
-//    public void setAvtors(Set<Avtor> avtors) {
-//        this.avtors = avtors;
-//    }
+
+    public Set<Avtor> getAvtors() {
+        return new HashSet<Avtor>(avtors);
+    }
+
+    public void setAvtors(Set<Avtor> avtors) {
+        this.avtors = avtors;
+    }
 
     public String toString(){
         return "book: "+getName();
+    }
+    public void addAvtor(Avtor avtor){
+        if (avtors.contains(avtor))
+            return;
+        avtors.add(avtor);
     }
 
 //    public void addAvtor(Avtor avtor) {

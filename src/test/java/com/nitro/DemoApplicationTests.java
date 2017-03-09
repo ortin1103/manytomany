@@ -84,16 +84,22 @@ public class DemoApplicationTests {
 
     @Test
     public void countBooks() {
-        Avtor first = new Avtor("Semen", "Arsenyev");
-        Avtor second = new Avtor("Alex", "Jersy");
-        Avtor three = new Avtor("Vova", "Geremiy");
-        Avtor four = new Avtor("Roman", "Sapkovskiy");
-        first.addBook(new Book("My life"));
-        second.addBook(new Book("Second of wins"));
-        first.addBook(new Book("My firs of dance"));
-        second.addBook(new Book("Seconds of death"));
-        four.addBook(new Book("Library"));
-        avtorRepo.save(Arrays.asList(first, second, three, four));
+//        Avtor first = new Avtor("Semen", "Arsenyev");
+//        Avtor second = new Avtor("Alex", "Jersy");
+//        Avtor three = new Avtor("Vova", "Geremiy");
+//        Avtor four = new Avtor("Roman", "Sapkovskiy");
+//        first.addBook(new Book("My life"));
+//        second.addBook(new Book("Second of wins"));
+//        first.addBook(new Book("My firs of dance"));
+//        second.addBook(new Book("Seconds of death"));
+//        four.addBook(new Book("Library"));
+//        avtorRepo.save(Arrays.asList(first, second, three, four));
+        Book first = new Book("My life");
+        Book second = new Book("Second of wins");
+        Book three = new Book("My firs of dance");
+        Book four = new Book("Seconds of death");
+        Book fife = new Book("Library");
+        bookRepo.save(Arrays.asList(first, second, three, four, fife));
         logger.info("*****************");
         logger.info("**** counts: " + bookRepo.count());
         logger.info("*****************");
@@ -121,22 +127,38 @@ public class DemoApplicationTests {
 
     @Test
     public void testAllBooks() {
-        Avtor first = new Avtor("Semen", "Arsenyev");
-        Avtor second = new Avtor("Alex", "Jersy");
-        Avtor three = new Avtor("Vova", "Geremiy");
-        Avtor four = new Avtor("Roman", "Sapkovskiy");
-        first.addBook(new Book("My life"));
-        second.addBook(new Book("Second of wins"));
-        first.addBook(new Book("My firs of dance"));
-        second.addBook(new Book("Seconds of death"));
-        four.addBook(new Book("Library"));
-        avtorRepo.save(Arrays.asList(first, second, three, four));
-        logger.info("*****************");
-        Iterable<Book> allbooks = bookRepo.findAll();
-        for (Book book : allbooks) {
-            logger.info(book.getName());
+//        Avtor first = new Avtor("Semen", "Arsenyev");
+//        Avtor second = new Avtor("Alex", "Jersy");
+//        Avtor three = new Avtor("Vova", "Geremiy");
+//        Avtor four = new Avtor("Roman", "Sapkovskiy");
+//        first.addBook(new Book("My life"));
+//        second.addBook(new Book("Second of wins"));
+//        first.addBook(new Book("My firs of dance"));
+//        second.addBook(new Book("Seconds of death"));
+//        four.addBook(new Book("Library"));
+//        avtorRepo.save(Arrays.asList(first, second, three, four));
+//        logger.info("*****************");
+//        Iterable<Book> allbooks = bookRepo.findAll();
+//        for (Book book : allbooks) {
+//            logger.info(book.getName());
+//        }
+//    }
+        Book first = new Book("My life");
+        Book second = new Book("Second of wins");
+        Book three = new Book("My firs of dance");
+        Book four = new Book("Seconds of death");
+        Book fife = new Book("Library");
+        bookRepo.save(Arrays.asList(first, second, three, four, fife));
+       Iterable<Book> books= bookRepo.findAll();
+        for (Book book : books) {
+            logger.info(book.toString());
         }
+
+
+
     }
+
+
 
     @Test
     public void testGetBookByName() {

@@ -7,18 +7,15 @@ import java.util.Set;
 @Entity
 public class Avtor {
 
-
-    @Id
-  //  @Column(name = "avtors_id")
+@Id
     @GeneratedValue
     private long id;
 
-    @ManyToMany(mappedBy = "avtors",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
-//    @JoinTable(name="avtors_books",
-//            joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
-//            inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="book_avtors",
+            joinColumns = @JoinColumn(name="avtor_id", referencedColumnName="id"),
+            inverseJoinColumns = @JoinColumn(name="book_id", referencedColumnName="id"))
     private Set<Book> books=new HashSet<Book>();
-
 
     private String name;
     private String secondName;
@@ -40,7 +37,7 @@ public class Avtor {
     }
 
     public Set<Book> getBooks() {
-        return new HashSet<Book>(books);
+        return books;
     }
 
     public void setBooks(Set<Book> books) {

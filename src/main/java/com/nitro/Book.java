@@ -9,16 +9,12 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue
-//    @Column(name = "books_id")
     private long id;
 
     private String name;
 
-   @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-//    @JoinTable(name="avtors_books",
-//            joinColumns = @JoinColumn(name="avtors_id", referencedColumnName="id"),
-//            inverseJoinColumns = @JoinColumn(name="books_id", referencedColumnName="id"))
-  private Set<Avtor> avtors=new HashSet<Avtor>();
+    @ManyToMany(mappedBy = "books", fetch = FetchType.EAGER)
+    private Set<Avtor> avtors = new HashSet<Avtor>();
 
     public Book(String name) {
         this.name = name;
@@ -44,7 +40,7 @@ public class Book {
     }
 
     public Set<Avtor> getAvtors() {
-        return new HashSet<Avtor>(avtors);
+        return avtors;
     }
 
     public void setAvtors(Set<Avtor> avtors) {
@@ -54,11 +50,11 @@ public class Book {
     public String toString(){
         return "book: "+getName();
     }
-    public void addAvtor(Avtor avtor){
-        if (avtors.contains(avtor))
-            return;
-        avtors.add(avtor);
-    }
+//    public void addAvtor(Avtor avtor){
+//        if (avtors.contains(avtor))
+//            return;
+//        avtors.add(avtor);
+//    }
 
 //    public void addAvtor(Avtor avtor) {
 //        avtors.add(avtor);
